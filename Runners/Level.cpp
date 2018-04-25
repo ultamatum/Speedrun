@@ -8,12 +8,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 
 Level::~Level() {}
 
-void Level::Update()
+void Level::Update(float deltaTime)
 {
 
 }
 
-void Level::HandleInput()
+void Level::HandleInput(float deltaTime)
 {
 
 }

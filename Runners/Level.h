@@ -10,8 +10,8 @@ public:
 	Level(sf::RenderWindow* hwnd, Input* inpt);
 	~Level();
 
-	void HandleInput();
-	void Update();
+	void HandleInput(float deltaTime);
+	void Update(float deltaTime);
 	void Render();
 
 private:
