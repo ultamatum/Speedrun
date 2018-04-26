@@ -19,6 +19,30 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{f8f48d00-c22f-440f-a18c-447e4ec0af36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{5359de86-5ca7-4d66-b315-7afe8087c391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{202a02a7-f22f-4eb0-ab3f-b926a014b4f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets\Sprites">
+      <UniqueIdentifier>{9623a5c6-28e0-4e0b-80bd-cea53a7ab324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets\Audio">
+      <UniqueIdentifier>{8cff410a-68d1-41ef-b19b-20ca5c3f7a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Sprites">
+      <UniqueIdentifier>{c3cda5aa-a1ef-4ee0-9193-2bd70e75e030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Audio">
+      <UniqueIdentifier>{a7a57db7-9a5d-4b11-964d-07101690c9b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets\Map">
+      <UniqueIdentifier>{2a9a3df5-5ecc-456a-ae53-7ff91134c7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Map">
+      <UniqueIdentifier>{77f5085f-f911-4d7f-9aa5-2fedc425cc30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -30,8 +54,32 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Assets\Sprites</Filter>
+    </ClCompile>
     <ClCompile Include="Sprites.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Assets\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\Assets\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicObject.cpp">
+      <Filter>Source Files\Assets\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Source Files\Assets\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Assets\Sprites</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +89,31 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\Assets\Sprites</Filter>
+    </ClInclude>
     <ClInclude Include="Sprites.h">
+      <Filter>Header Files\Assets\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\Assets\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicObject.h">
+      <Filter>Header Files\Assets\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header Files\Assets\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

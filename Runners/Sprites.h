@@ -22,10 +22,9 @@ public:
 	//For sprite collision
 	bool IsCollider() { return collider; };
 	void SetCollider(bool b) { collider = b; };
-	sf::FloatRect GetCollisionBox() { return collisionBox; };
+	sf::FloatRect GetCollisionBox();
 	void SetCollisionBox(float x, float y, float width, float height) { collisionBox = sf::FloatRect(x, y, width, height); };
 	void SetCollisionBox(sf::FloatRect fr) { collisionBox = fr; };
-	virtual void UpdateCollisionBox();
 	virtual void CollisionResponse(Sprites* sp);
 
 	//Input component

@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Input.h"
+#include "TileMap.h"
 
 class Level
 {
@@ -17,6 +18,8 @@ public:
 private:
 	sf::RenderWindow* window;
 	Input* input;
+	TileMap tileMap;
+
 	void BeginDraw();
 	void EndDraw();
 };
