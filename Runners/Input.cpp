@@ -2,7 +2,7 @@
 
 void Input::SetKeyDown(int key)
 {
-	if (key > 0)
+	if (key >= 0)
 	{
 		keys[key] = true;
 	}
@@ -10,7 +10,7 @@ void Input::SetKeyDown(int key)
 
 void Input::SetKeyUp(int key)
 {
-	if (key > 0)
+	if (key >= 0)
 	{
 		keys[key] = false;
 	}

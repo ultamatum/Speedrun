@@ -6,6 +6,9 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 {
 	window = hwnd;
 	input = inpt;
+	player = Player(input, sf::Vector2f(0, 0));
+	texture.loadFromFile("gfx/MushroomTrans.png");
+	player.setTexture(&texture);
 
 	#pragma region TileMap Creation
 	tileMap.LoadTexture((char*)"gfx/marioTiles.png");
@@ -53,7 +56,17 @@ Level::~Level() {}
 
 void Level::Update(float deltaTime)
 {
+	std::vector<Sprites>* world = tileMap.GetLevel();
 
+	player.Update(deltaTime);
+
+	for (int i = 0; i < (int)world->size(); i++)
+	{
+		if ((*world)[i].IsCollider())
+		{
+			if (Collision::)
+		}
+	}
 }
 
 void Level::HandleInput(float deltaTime)
@@ -66,6 +79,8 @@ void Level::Render()
 	BeginDraw();
 
 	tileMap.Render(window);
+
+	window->draw(player);
 
 	EndDraw();
 }

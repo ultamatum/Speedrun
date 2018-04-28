@@ -83,8 +83,6 @@ int main()
 				level.HandleInput(deltaTime);
 				level.Update(deltaTime);
 				level.Render();
-
-				std::cout << window.getSize().y << std::endl;
 				break;
 			case (State::CREDITS):
 
