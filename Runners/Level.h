@@ -5,6 +5,8 @@
 #include "Input.h"
 #include "TileMap.h"
 #include "Player.h"
+#include "Collectable.h"
+#include "Collision.h"
 
 class Level
 {
@@ -18,10 +20,18 @@ public:
 
 private:
 	sf::RenderWindow* window;
-	sf::Texture texture;
+	sf::Texture playerTexture;
+	sf::Texture starTexture;
+	sf::Font font;
+	sf::Text clockText;
+	sf::Clock clock;
 	Input* input;
 	TileMap tileMap;
 	Player player;
+	std::vector<Collectable> stars;
+
+	int starCount;
+	float timer;
 
 	void BeginDraw();
 	void EndDraw();

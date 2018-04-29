@@ -84,7 +84,7 @@ int main()
 				level.Update(deltaTime);
 				level.Render();
 				break;
-			case (State::CREDITS):
+			case (State::HELP):
 
 				break;
 		}

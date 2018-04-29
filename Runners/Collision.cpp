@@ -1,22 +1,22 @@
 #include "Collision.h"
 
 // check AABB
-bool Collision::checkBoundingBox(MySprite* s1, MySprite* s2)
+bool Collision::CheckBoundingBox(Sprites* s1, Sprites* s2)
 {
-	if (s1->getCollisionBox().left + s1->getCollisionBox().width < s2->getCollisionBox().left)
+	if (s1->GetCollisionBox().left + s1->GetCollisionBox().width < s2->GetCollisionBox().left)
 		return false;
-	if (s1->getCollisionBox().left > s2->getCollisionBox().left + s2->getCollisionBox().width)
+	if (s1->GetCollisionBox().left > s2->GetCollisionBox().left + s2->GetCollisionBox().width)
 		return false;
-	if (s1->getCollisionBox().top + s1->getCollisionBox().height < s2->getCollisionBox().top)
+	if (s1->GetCollisionBox().top + s1->GetCollisionBox().height < s2->GetCollisionBox().top)
 		return false;
-	if (s1->getCollisionBox().top > s2->getCollisionBox().top + s2->getCollisionBox().height)
+	if (s1->GetCollisionBox().top > s2->GetCollisionBox().top + s2->GetCollisionBox().height)
 		return false;
 
 	return true;
 }
 
 // check Sphere bounding collision
-bool Collision::checkBoundingSphere(MySprite* s1, MySprite* s2)
+bool Collision::CheckBoundingSphere(Sprites* s1, Sprites* s2)
 {
 	// Get radius and centre of sprites.
 	float radius1 = s1->getSize().x / 2;

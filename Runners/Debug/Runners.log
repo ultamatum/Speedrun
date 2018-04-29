@@ -1,5 +1,6 @@
 ﻿  Level.cpp
-  Main.cpp
-  Player.cpp
-  Generating Code...
+c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(138): warning C4018: '>=': signed/unsigned mismatch
+c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(156): warning C4018: '<': signed/unsigned mismatch
   Runners.vcxproj -> C:\Users\Ultamatum\Documents\CMP105\Speedrun\Debug\Runners.exe

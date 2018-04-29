@@ -81,6 +81,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Assets\Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteType.cpp">
+      <Filter>Source Files\Assets\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectable.cpp">
+      <Filter>Source Files\Assets\Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Level.h">
@@ -114,6 +123,15 @@
       <Filter>Header Files\Assets\Map</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>Header Files\Assets\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteType.h">
+      <Filter>Header Files\Assets\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectable.h">
       <Filter>Header Files\Assets\Sprites</Filter>
     </ClInclude>
   </ItemGroup>

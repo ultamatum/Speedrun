@@ -1,13 +1,13 @@
 #pragma once
-#include "MySprite.h"
+#include "Sprites.h"
 
 // Static class provide collision detection functions.
 class Collision
 {
 public:
 	//AABB
-	static bool checkBoundingBox(MySprite* sp1, MySprite* sp2);
+	static bool CheckBoundingBox(Sprites* sp1, Sprites* sp2);
 	// Bounding circle
-	static bool checkBoundingSphere(MySprite* sp1, MySprite* sp2);
+	static bool CheckBoundingSphere(Sprites* sp1, Sprites* sp2);
 
 };

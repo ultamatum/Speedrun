@@ -1,12 +1,15 @@
 #pragma once
 #include "SFML\Graphics.hpp"
 #include "Input.h"
+#include "SpriteType.h"
 
 class Sprites : public sf::RectangleShape
 {
 public:
 	Sprites();
 	~Sprites();
+
+	SpriteType sType;
 
 	virtual void Update(float dt);
 

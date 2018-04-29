@@ -21,7 +21,7 @@ public:
 
 	void SetPosition(sf::Vector2f pos) { position = pos; };
 
-	sf::Vector2u GetTileSize() { return texture.getSize(); };
+	sf::Vector2u GetTileSetSize() { return texture.getSize(); };
 	sf::Vector2u GetMapSize() { return mapSize; };
 
 protected:

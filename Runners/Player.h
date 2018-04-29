@@ -10,7 +10,7 @@ public:
 	~Player();
 
 	void Update(float dt);
-
+	void CollisionResponse(Sprites* sp);
 private:
 	float gravity;
 	float speed;

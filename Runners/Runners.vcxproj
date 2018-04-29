@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="Collectable.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -29,12 +31,15 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="SpriteType.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="Collectable.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Level.h" />
@@ -42,6 +47,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprites.h" />
+    <ClInclude Include="SpriteType.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
