@@ -1,6 +1,8 @@
 #include <iostream>
+#include "Menu.h"
 #include "Level.h"
 #include "GameOver.h"
+#include "Help.h"
 #include "Input.h"
 #include "GameState.h"
 
@@ -16,13 +18,15 @@ int main()
 	GameState gameState;
 	Input input;
 	Level level(&window, &input, &gameState, &score);
+	Menu menu(&window, &input, &gameState, &level);
 	GameOver gameOver(&window, &input, &gameState, &score);
+	Help help(&window, &input, &gameState);
 
 	//Delta Time
 	sf::Clock clock;
 	float deltaTime;
 
-	gameState.SetCurrentState(State::LEVEL);
+	gameState.SetCurrentState(State::MENU);
 
 	#pragma region Game Loop
 	while (window.isOpen())
@@ -85,11 +89,17 @@ int main()
 		switch (gameState.GetCurrentState())
 		{
 			case (State::MENU):
-
+				menu.HandleInput();
+				menu.Update();
+				menu.Render();
 				break;
 			case (State::LEVEL):
-				level.HandleInput(deltaTime);
+				level.HandleInput();
 				level.Update(deltaTime);
+				level.Render();
+				break;
+			case (State::PAUSE):
+				level.HandleInput();
 				level.Render();
 				break;
 			case (State::GAMEOVER):
@@ -98,7 +108,8 @@ int main()
 				gameOver.Render();
 				break;
 			case (State::HELP):
-
+				help.HandleInput();
+				help.Render();
 				break;
 		}
 		#pragma endregion

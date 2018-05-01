@@ -10,8 +10,9 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt, GameState* gState, float* scre
 	gameState = gState;
 
 	//Create player
-	player = Player(input, sf::Vector2f(100, 100));
-	playerTexture.loadFromFile("gfx/MushroomTrans.png");
+	startPos = sf::Vector2f(100, 100);
+	player = Player(input, startPos);
+	playerTexture.loadFromFile("gfx/player.png");
 	player.setTexture(&playerTexture);
 
 	//Creating the text for the timer
@@ -20,7 +21,18 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt, GameState* gState, float* scre
 	clockText.setFont(font);
 	clockText.setCharacterSize(24);
 	clockText.setFillColor(sf::Color::White);
+	clockText.setOutlineThickness(2);
 	clockText.setOutlineColor(sf::Color::Black);
+
+	pauseText.setFont(font);
+	pauseText.setCharacterSize(72);
+	pauseText.setFillColor(sf::Color::Red);
+	pauseText.setOutlineThickness(4);
+	pauseText.setOutlineColor(sf::Color::Black);
+	pauseText.setString("Paused!");
+	sf::FloatRect textRect = pauseText.getLocalBounds();
+	pauseText.setOrigin(textRect.left + textRect.width / 2, textRect.top + textRect.height / 2);
+	pauseText.setPosition(window->getSize().x / 2, window->getSize().y / 2);
 
 	#pragma region TileMap Creation
 	tileMap.LoadTexture((char*)"gfx/marioTiles.png");
@@ -106,6 +118,32 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt, GameState* gState, float* scre
 
 Level::~Level() {}
 
+//Resets all the variables to their default
+void Level::Reset()
+{
+	player.setPosition(startPos);
+	*score = 0;
+	starsCollected = false;
+	starCount = 0;
+	timer = 0;
+
+	for (int i = 0; i < stars.size(); i++)
+	{
+		stars[i].SetAlive(true);
+	}
+}
+
+//Handle Input method used to control keyboard responses with pausing
+void Level::HandleInput()
+{
+	if (input->IsKeyDown(sf::Keyboard::P))
+	{
+		input->SetKeyUp(sf::Keyboard::P);
+		paused = !paused;
+		gameState->SetCurrentState(paused ? State::PAUSE : State::LEVEL);
+	}
+}
+
 void Level::Update(float deltaTime)
 {
 	std::vector<Sprites>* world = tileMap.GetLevel();														//Create a vector of the world (for collision checks)
@@ -156,8 +194,6 @@ void Level::Update(float deltaTime)
 	}
 }
 
-void Level::HandleInput(float deltaTime) {}
-
 void Level::Render()
 {
 	BeginDraw();
@@ -174,6 +210,11 @@ void Level::Render()
 		{
 			window->draw(stars[i]);
 		}
+	}
+
+	if (paused)
+	{
+		window->draw(pauseText);
 	}
 
 	EndDraw();

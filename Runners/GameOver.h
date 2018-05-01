@@ -19,10 +19,8 @@ public:
 private:
 	sf::RenderWindow* window;
 	sf::Font font;
-	sf::Text gameOverText;
+	sf::Text gameOverText, scoreText, continueText;
 	sf::FloatRect gameOverTextRect;
-	sf::Text scoreText;
-	sf::Text continueText;
 	Input* input;
 	GameState* gameState;
 

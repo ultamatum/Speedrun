@@ -15,17 +15,19 @@ public:
 	Level(sf::RenderWindow* hwnd, Input* inpt, GameState* gState, float* score);
 	~Level();
 
-	void HandleInput(float deltaTime);
+	void Reset();
+	void HandleInput();
 	void Update(float deltaTime);
 	void Render(); 
 
 private:
 	sf::RenderWindow* window;				
-	sf::Texture playerTexture;		
+	sf::Texture playerTexture;
 	sf::Texture starTexture;		
 	sf::Font font;			
-	sf::Text clockText;
+	sf::Text clockText, pauseText;
 	sf::Clock clock;
+	sf::Vector2f startPos;
 	Input* input;
 	GameState* gameState;
 	TileMap tileMap;
@@ -34,6 +36,7 @@ private:
 
 	int starCount;							//Used to keep count of how many stars are collected
 	bool starsCollected = false;			//Keeps track if all stars are collected
+	bool paused;
 	float timer;
 	float* score;
 

@@ -14,6 +14,31 @@ Player::Player(Input* input, sf::Vector2f startPos)
 	scale = 150.f;
 	speed = 50.f;
 	gravity = 9.8f*scale;
+
+	#pragma region Animations
+	idle.AddFrame(sf::IntRect(0, 0, 11, 11));
+	idle.AddFrame(sf::IntRect(0, 0, 11, 11));
+	idle.SetLooping(false);
+	
+	for (int i = 0; i < 4; i++)
+	{
+		walk.AddFrame(sf::IntRect(11 * i, 11, 11, 11));
+	}
+	walk.SetFrameSpeed(1.f / 7.14f);
+	walk.SetLooping(true);
+
+	for (int i = 0; i < 2; i++)
+	{
+		jump.AddFrame(sf::IntRect(11 * i, 22, 11, 11));
+	}
+	jump.SetFrameSpeed(1.f / 5.5f);
+	jump.SetLooping(true);
+
+	currentAnim = &idle;
+	currentAnim->Reset();
+	currentAnim->SetPlaying(true);
+	setTextureRect(currentAnim->GetCurrentFrame());
+	#pragma endRegion
 }
 
 Player::~Player() {}
@@ -35,6 +60,10 @@ void Player::Update(float dt)
 	Movement(dt);
 
 	move(velocity*dt);										//Moves the player given all calculated velocities
+
+	currentAnim->SetPlaying(true);
+	currentAnim->Animate(dt);
+	setTextureRect(currentAnim->GetCurrentFrame());
 }
 
 void Player::Movement(float dt)
@@ -44,21 +73,59 @@ void Player::Movement(float dt)
 	if (input->IsKeyDown(sf::Keyboard::D))
 	{
 		direction += 1;
+
+		if (currentAnim != &walk)
+		{
+			currentAnim = &walk;
+			currentAnim->SetFlipped(false);					//Have to make sure animation is flipped so no moonwalking
+			idle.SetFlipped(false);							//Makes sure player doesnt just turn around whenever no buttons are pressed
+			currentAnim->Reset();
+		}
 	}
 
 	if (input->IsKeyDown(sf::Keyboard::A))
 	{
 		direction -= 1;
+
+		if (currentAnim != &walk)
+		{
+			currentAnim = &walk;
+			currentAnim->SetFlipped(true);					//Have to make sure animation is flipped so no moonwalking
+			idle.SetFlipped(true);							//Makes sure player doesnt just turn around whenever no buttons are pressed
+			currentAnim->Reset();
+		}
+	}
+
+	//If a / d isnt pressed then animation is idle
+	if (direction == 0)
+	{
+		if (currentAnim != &idle)
+		{
+			currentAnim = &idle;
+			currentAnim->Reset();
+		}
 	}
 
 	if (input->IsKeyDown(sf::Keyboard::Space) && isJumping == false && velocity.y < 10)
 	{
 		velocity.y = -4.f * scale;
 		isJumping = true;
+
+		if (currentAnim != &jump)
+		{
+			currentAnim = &jump;
+			currentAnim->Reset();
+		}
 	}
 	else if (!input->IsKeyDown(sf::Keyboard::Space) && velocity.y < 0)
 	{
 		velocity.y *= 0.75;
+
+		if (currentAnim != &jump)
+		{
+			currentAnim = &jump;
+			currentAnim->Reset();
+		}
 	}
 
 	velocity.x += (direction * speed);

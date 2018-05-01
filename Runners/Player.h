@@ -1,6 +1,7 @@
 #pragma once
 #include "Sprites.h"
 #include "Input.h"
+#include "Animation.h"
 
 //Class for player logic and control
 class Player : public Sprites
@@ -13,6 +14,11 @@ public:
 	void Update(float dt);
 	void CollisionResponse(Sprites* sp);
 private:
+	Animation idle;
+	Animation walk;
+	Animation jump;
+	Animation* currentAnim;
+
 	float gravity;
 	float speed;
 	float scale;

@@ -1,5 +1,2 @@
-﻿  GameOver.cpp
-c:\users\ultamatum\documents\cmp105\speedrun\runners\gameover.cpp(37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Player.cpp
-  Generating Code...
+﻿  Menu.cpp
   Runners.vcxproj -> C:\Users\Ultamatum\Documents\CMP105\Speedrun\Debug\Runners.exe
