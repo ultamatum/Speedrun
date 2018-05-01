@@ -43,12 +43,15 @@
     <Filter Include="Header Files\Assets\Map">
       <UniqueIdentifier>{77f5085f-f911-4d7f-9aa5-2fedc425cc30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameStates">
+      <UniqueIdentifier>{27cbe441-686b-4577-907c-1b1529156e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gamestates">
+      <UniqueIdentifier>{123ba4e1-359d-48a4-a342-c8f57b1f5064}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
@@ -90,11 +93,14 @@
     <ClCompile Include="Collectable.cpp">
       <Filter>Source Files\Assets\Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
@@ -133,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="Collectable.h">
       <Filter>Header Files\Assets\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Gamestates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files\Gamestates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

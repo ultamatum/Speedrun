@@ -1,6 +1,5 @@
-﻿  Level.cpp
-c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(40): warning C4018: '<': signed/unsigned mismatch
-c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(138): warning C4018: '>=': signed/unsigned mismatch
-c:\users\ultamatum\documents\cmp105\speedrun\runners\level.cpp(156): warning C4018: '<': signed/unsigned mismatch
+﻿  GameOver.cpp
+c:\users\ultamatum\documents\cmp105\speedrun\runners\gameover.cpp(37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Player.cpp
+  Generating Code...
   Runners.vcxproj -> C:\Users\Ultamatum\Documents\CMP105\Speedrun\Debug\Runners.exe

@@ -2,15 +2,19 @@
 
 using namespace std;
 
-Level::Level(sf::RenderWindow* hwnd, Input* inpt)
+Level::Level(sf::RenderWindow* hwnd, Input* inpt, GameState* gState, float* scre)
 {
 	window = hwnd;
 	input = inpt;
+	score = scre;
+	gameState = gState;
 
+	//Create player
 	player = Player(input, sf::Vector2f(100, 100));
 	playerTexture.loadFromFile("gfx/MushroomTrans.png");
 	player.setTexture(&playerTexture);
 
+	//Creating the text for the timer
 	if (!font.loadFromFile("font/arial.ttf")) { std::cout << "Error loading font\n"; }
 
 	clockText.setFont(font);
@@ -26,15 +30,16 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 
 	for (int i = 0; i < 54; i++)
 	{
-		tile.setSize(sf::Vector2f(32, 32));
+		tile.setSize(sf::Vector2f(32, 32));			//Each tile is at 2x scale
 		tile.SetCollisionBox(0, 0, 32, 32);
 		tile.SetCollider(true);
-		tile.sType.SetType(Type::MAP);
+		tile.sType.SetType(Type::MAP);				//Using sprite labels for easy collision checks
 		tiles.push_back(tile);
 	}
 
-	tiles[0].SetCollider(false);
+	tiles[0].SetCollider(false);					//Tile 0 is used for air
 
+	//Auto load every texture in the file
 	for (int y = 0; y < tileMap.GetTileSetSize().y / 17; y++)
 	{
 		for (int x = 0; x < tileMap.GetTileSetSize().x / 17; x++)
@@ -47,6 +52,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 
 	//Map Dimensions 
 	sf::Vector2u mapSize(40, 23);
+	//A number representation of the map each number indicates the ID of the tile from the sheet
 	std::vector<int> map = {
 		11, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 11,
 		12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
@@ -67,9 +73,9 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 		12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		12, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		12, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		12, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		12, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		12, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		12, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		33, 34, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 34, 32
 	};
 
@@ -81,6 +87,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* inpt)
 	#pragma region Star Placement
 	Collectable star;
 	starTexture.loadFromFile("gfx/star.png");
+
+	//Creating all stars and putting them in the list
 	for (int i = 0; i < 1; i++)
 	{
 		star.setSize(sf::Vector2f(32, 32));
@@ -100,17 +108,18 @@ Level::~Level() {}
 
 void Level::Update(float deltaTime)
 {
-	std::vector<Sprites>* world = tileMap.GetLevel();
-	timer += clock.restart().asSeconds();
+	std::vector<Sprites>* world = tileMap.GetLevel();														//Create a vector of the world (for collision checks)
+	if (!starsCollected) timer += clock.restart().asSeconds();												//Update the timer to have an accurate count of how long the level has been played
 
-	clockText.setString(std::to_string((int)timer));
-	sf::FloatRect textRect = clockText.getLocalBounds();
-	clockText.setOrigin(textRect.left + textRect.width / 2, textRect.top + textRect.height / 2);
+	clockText.setString(std::to_string((int)timer));														//Update the timer string
+	sf::FloatRect textRect = clockText.getLocalBounds();													
+	clockText.setOrigin(textRect.left + textRect.width / 2, textRect.top + textRect.height / 2);			//Setting the origin of the text to the center so I can center it on the screen
 	clockText.setPosition(sf::Vector2f(1280 / 2, 40));
 
-	player.Update(deltaTime);	 
+	player.Update(deltaTime);
 
 	#pragma region Collision Detection
+	//Check if the player collides with the world
 	for (int i = 0; i < (int)world->size(); i++)
 	{
 		if ((*world)[i].IsCollider())
@@ -122,6 +131,7 @@ void Level::Update(float deltaTime)
 		}
 	}
 
+	//Check if the player collides with any stars
 	for (int i = 0; i < (int)stars.size(); i++)
 	{
 		if (stars[i].IsAlive())
@@ -135,9 +145,14 @@ void Level::Update(float deltaTime)
 	}
 	#pragma endregion
 
+	*score = (int)timer;
+
+	//Checks if the game should end
 	if (starCount >= stars.size())
 	{
-
+		starsCollected = true;
+		*score = (int)timer;
+		gameState->SetCurrentState(State::GAMEOVER);
 	}
 }
 

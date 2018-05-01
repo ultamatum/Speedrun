@@ -23,6 +23,7 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Collectable.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Collectable.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Level.h" />

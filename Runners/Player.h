@@ -2,6 +2,7 @@
 #include "Sprites.h"
 #include "Input.h"
 
+//Class for player logic and control
 class Player : public Sprites
 {
 public:
